@@ -2,6 +2,13 @@
 
 Portal web interno y estático para centralizar herramientas HTML de ALVSOL S.A. / BOX Protección Celular.
 
+## Portal publicado
+
+- Sitio: https://bran-alvsol.github.io/alvsol-tools/
+- Código: https://github.com/bran-alvsol/alvsol-tools
+
+El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inicio de sesión y las herramientas devuelven al portal a quien intente abrirlas directamente sin una sesión autorizada.
+
 ## Objetivo
 
 - Mantener un portal principal con login y dashboard.
@@ -107,6 +114,20 @@ No abras `index.html` directo con doble clic para probar Firebase, porque los m�
 5. Guarda y espera la URL pública de GitHub Pages.
 
 Si usas un dominio de GitHub Pages, agrega ese dominio en Firebase Authentication > Settings > Authorized domains.
+
+En este proyecto ya está autorizado el dominio `bran-alvsol.github.io`.
+
+## Publicar cambios futuros
+
+Después de modificar y probar el portal, ejecuta desde esta carpeta:
+
+```powershell
+git add .
+git commit -m "Descripción breve del cambio"
+git push
+```
+
+GitHub Pages publicará automáticamente la nueva versión unos minutos después.
 
 ## Agregar una herramienta nueva
 
