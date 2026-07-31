@@ -1,0 +1,18 @@
+HERRAMIENTA BOX – COMPRAS, TRANSFERENCIAS Y CATÁLOGO V5.21
+
+Correcciones principales:
+- Catálogo APK siempre reconstruido desde el análisis activo; el caché nunca sustituye reportes nuevos.
+- Firma de contenido basada en SKU, nombre, descripción, marca, categoría, grupo y modelo.
+- Exportaciones bloqueadas cuando hay archivos o parámetros nuevos sin analizar.
+- Punto de control V5.21 independiente y validado.
+- Marca y modelo conservan mayúsculas, minúsculas, tildes y signos del reporte.
+- Fórmula de modelo: Nombre menos Descripción, sin agregar GALAXY ni inferir marcas.
+- Sucursales APK tomadas dinámicamente del reporte de existencias; excluye ubicaciones inactivas y publicidad.
+- Versión visual y nombres de exportación uniformados como V5.21.
+
+Uso recomendado:
+1. Abra el HTML V5.21.
+2. Cargue los reportes actuales.
+3. Pulse Analizar archivos.
+4. Verifique el aviso verde de datos vigentes.
+5. Exporte el catálogo APK.

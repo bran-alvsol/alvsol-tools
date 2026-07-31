@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" class="tool-auth-pending">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Herramienta demo | ALVSOL Tools</title>
+    <style>.tool-auth-pending body { visibility: hidden; }</style>
+    <script type="module" src="../../assets/js/tool-guard.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="tool-header">
+      <a href="../../index.html" class="back-link" aria-label="Volver al portal">&larr;</a>
+      <div>
+        <p>ALVSOL Tools</p>
+        <h1>Herramienta demo</h1>
+      </div>
+    </header>
+
+    <main class="tool-layout">
+      <section class="tool-panel" aria-labelledby="demo-title">
+        <div>
+          <p class="eyebrow">Ejemplo independiente</p>
+          <h2 id="demo-title">Calculadora rápida de folios</h2>
+          <p class="muted">
+            Esta herramienta vive dentro de su propia carpeta y no depende del código del portal.
+          </p>
+        </div>
+
+        <form id="demo-form" class="demo-form">
+          <label>
+            Prefijo
+            <input id="prefix" type="text" value="BOX" maxlength="8" required>
+          </label>
+          <label>
+            Número inicial
+            <input id="start" type="number" value="1000" min="1" required>
+          </label>
+          <label>
+            Cantidad
+            <input id="count" type="number" value="5" min="1" max="25" required>
+          </label>
+          <button type="submit">Generar</button>
+        </form>
+      </section>
+
+      <section class="output-panel" aria-labelledby="results-title">
+        <h2 id="results-title">Resultados</h2>
+        <ol id="results"></ol>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

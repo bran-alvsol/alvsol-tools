@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALVSOL Tools</title>
+    <meta
+      name="description"
+      content="Portal interno de herramientas HTML para ALVSOL S.A. y BOX Protección Celular."
+    >
+    <link rel="stylesheet" href="./assets/css/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="ALVSOL Tools inicio">
+        <span class="brand-mark">AT</span>
+        <span>
+          <strong>ALVSOL Tools</strong>
+          <small>ALVSOL S.A. / BOX Protección Celular</small>
+        </span>
+      </a>
+      <div class="session-actions" data-authenticated="false">
+        <span id="current-username" class="user-email"></span>
+        <button id="logout-button" class="icon-button" type="button" title="Cerrar sesión" aria-label="Cerrar sesión">
+          <span aria-hidden="true">&#x23FB;</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="login-view" class="auth-shell" aria-labelledby="login-title">
+        <div class="auth-panel">
+          <p class="eyebrow">Portal interno</p>
+          <h1 id="login-title">Iniciar sesión</h1>
+          <p class="muted">
+            Acceso para personal autorizado de ALVSOL y BOX.
+          </p>
+
+          <form id="login-form" class="form-grid">
+            <label>
+              Usuario
+              <input id="username" name="username" type="text" autocomplete="username" maxlength="30" required>
+            </label>
+            <label>
+              Contraseña
+              <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required>
+            </label>
+            <div class="button-row">
+              <button id="login-button" class="primary-button" type="submit">
+                Entrar
+              </button>
+            </div>
+          </form>
+
+          <p id="auth-message" class="status-message" role="status"></p>
+        </div>
+      </section>
+
+      <section id="dashboard-view" class="dashboard" hidden>
+        <div class="dashboard-hero">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Herramientas internas</h1>
+            <p class="muted">
+              Abre utilidades independientes, prueba Firestore y agrega nuevas herramientas por fases.
+            </p>
+          </div>
+          <div class="hero-metrics" aria-label="Resumen del portal">
+            <span><strong id="tool-count">1</strong> herramientas</span>
+            <span><strong id="migrated-count">1</strong> migradas</span>
+          </div>
+        </div>
+
+        <section class="section-block" aria-labelledby="tools-title">
+          <div class="section-heading">
+            <h2 id="tools-title">Herramientas</h2>
+            <span class="pill">Fase 1</span>
+          </div>
+
+          <div id="tools-grid" class="tools-grid"></div>
+        </section>
+
+        <section class="section-block" aria-labelledby="firebase-title">
+          <div class="section-heading">
+            <h2 id="firebase-title">Prueba Firestore</h2>
+            <span id="firebase-state" class="pill neutral">Pendiente</span>
+          </div>
+
+          <div class="test-console">
+            <div class="console-actions">
+              <button id="save-test-button" class="secondary-button" type="button">
+                Guardar prueba
+              </button>
+              <button id="read-test-button" class="secondary-button" type="button">
+                Leer pruebas
+              </button>
+            </div>
+            <pre id="firestore-output" aria-live="polite">Conecta Firebase para guardar y leer datos.</pre>
+          </div>
+        </section>
+
+        <section id="admin-section" class="section-block" aria-labelledby="admin-title" hidden>
+          <div class="section-heading">
+            <h2 id="admin-title">Administrar usuarios</h2>
+            <span class="pill">Solo administrador</span>
+          </div>
+
+          <div class="admin-layout">
+            <form id="create-user-form" class="admin-form">
+              <label>
+                Usuario nuevo
+                <input
+                  id="new-username"
+                  name="new-username"
+                  type="text"
+                  autocomplete="off"
+                  minlength="3"
+                  maxlength="30"
+                  pattern="[a-zA-Z0-9._-]+"
+                  required
+                >
+              </label>
+              <label>
+                Contraseña inicial
+                <input
+                  id="new-password"
+                  name="new-password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+              </label>
+              <button id="create-user-button" class="primary-button" type="submit">
+                Crear usuario
+              </button>
+              <p id="admin-message" class="status-message" role="status"></p>
+            </form>
+
+            <div class="user-directory" aria-labelledby="users-title">
+              <h3 id="users-title">Usuarios registrados</h3>
+              <ul id="managed-users-list" class="user-list"></ul>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./assets/js/app.js"></script>
+  </body>
+</html>
