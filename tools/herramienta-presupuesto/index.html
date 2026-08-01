@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="tool-auth-pending" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b3558" />
+  <title>Presupuesto de Compras ALVSOL</title>
+<style>.tool-auth-pending body{visibility:hidden}</style>
+<script type="module" src="../../assets/js/tool-guard.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <div class="brand-title">ALVSOL</div>
+          <div class="brand-subtitle">Presupuesto de compras</div>
+        </div>
+      </div>
+      <nav id="nav" class="nav"></nav>
+<a href="../../" data-alvsol-portal-link style="display:block;margin:12px 0;padding:9px 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;color:inherit;font-weight:700;text-align:center;text-decoration:none">â† Volver al portal</a>
+      <div class="sidebar-footer">
+        <button class="btn btn-ghost btn-block" data-action="backup">Crear respaldo</button>
+        <div class="version">Versión 1.4 local</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">Inicio</h1>
+          <div class="topbar-meta"><div id="periodLabel" class="muted">Sin periodo activo</div><div id="saveIndicator" class="save-indicator saved"><span class="save-dot"></span><span id="saveIndicatorText">Todos los cambios guardados</span></div></div>
+        </div>
+        <div class="topbar-actions">
+          <select id="periodSelector" class="control compact"></select>
+          <button class="btn btn-primary" data-action="new-period">Nuevo periodo</button>
+        </div>
+      </header>
+
+      <section id="view" class="view"></section>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root"></div>
+  <input id="hiddenFileInput" type="file" hidden multiple accept=".pdf,.png,.jpg,.jpeg,.webp" />
+  <input id="restoreInput" type="file" hidden accept=".json" />
+
+  <script src="vendor/pdfjs/pdf.min.js"></script>
+  <script src="vendor/xlsx/xlsx.full.min.js"></script>
+  <script src="vendor/tesseract/tesseract.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

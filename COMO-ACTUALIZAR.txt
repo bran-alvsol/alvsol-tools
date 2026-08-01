@@ -1,17 +1,20 @@
-COMO ACTUALIZAR HERRAMIENTA COMPRAS
-===================================
+COMO AGREGAR O ACTUALIZAR HERRAMIENTAS
+=======================================
 
 1. COLOCA EL ZIP
-   Abre ACTUALIZACIONES\PENDIENTES y coloca alli el ZIP nuevo.
+   Abre ACTUALIZACIONES\PENDIENTES y coloca alli el ZIP.
    Deja solamente un ZIP dentro de esa carpeta.
 
-2. PREPARA
-   Haz doble clic en ACTUALIZAR-ALVSOL-TOOLS.bat.
-   El portal local se abrira al terminar.
+2. ELIGE QUE HACER
+   Haz doble clic en GESTIONAR-HERRAMIENTAS.bat.
+
+   Escribe 0 para agregar una herramienta nueva.
+   Para actualizar, escribe el numero de la herramienta de la lista.
 
 3. PRUEBA
-   Entra a HERRAMIENTA COMPRAS y prueba reportes, calculos,
-   exportaciones, descargas y el regreso al portal.
+   El portal local se abrira al terminar.
+   Entra a la herramienta y prueba sus funciones principales,
+   archivos, calculos, exportaciones y regreso al portal.
 
 4. PUBLICA
    Si todo funciona, haz doble clic en PUBLICAR-ALVSOL-TOOLS.bat.
@@ -20,10 +23,7 @@ COMO ACTUALIZAR HERRAMIENTA COMPRAS
 IMPORTANTE
 ----------
 - Si aparece un error, la version que ya funcionaba no se borra.
-- El ZIP usado y el respaldo anterior quedan en
-  ACTUALIZACIONES\PROCESADAS.
+- El ZIP usado y los respaldos quedan en ACTUALIZACIONES\PROCESADAS.
+- Cada herramienta conserva su propia carpeta y su propio codigo.
 - GitHub Pages puede tardar unos minutos en mostrar el cambio.
 - Despues de publicar, abre el portal y presiona Ctrl + F5.
-
-Este proceso automatico esta preparado actualmente para
-HERRAMIENTA COMPRAS.

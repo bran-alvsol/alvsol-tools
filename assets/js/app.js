@@ -10,15 +10,7 @@ import {
   signOutCurrentUser
 } from "./firebase-service.js";
 
-const tools = [
-  {
-    name: "HERRAMIENTA COMPRAS",
-    description: "Compras, transferencias y catálogo BOX. Versión 5.21.",
-    status: "Abrir",
-    url: "./tools/herramienta-compras/",
-    migrated: true
-  }
-];
+let tools = [];
 
 const elements = {
   adminMessage: document.querySelector("#admin-message"),
@@ -49,13 +41,13 @@ const elements = {
 
 let firebaseModules = null;
 
-renderTools();
 boot();
 
 async function boot() {
   setBusy(true);
 
   try {
+    await loadTools();
     const firebaseState = await initializeFirebaseServices();
 
     if (!firebaseState.configured) {
@@ -76,6 +68,21 @@ async function boot() {
   } finally {
     setBusy(false);
   }
+}
+
+async function loadTools() {
+  const response = await fetch("./assets/data/tools.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("No se pudo cargar la lista de herramientas.");
+  }
+
+  const catalog = await response.json();
+  if (!Array.isArray(catalog)) {
+    throw new Error("La lista de herramientas no tiene un formato valido.");
+  }
+
+  tools = catalog;
+  renderTools();
 }
 
 function bindEvents() {
@@ -235,17 +242,23 @@ function renderManagedUsers(users) {
 function renderTools() {
   elements.toolCount.textContent = String(tools.length);
   elements.migratedCount.textContent = String(tools.filter((tool) => tool.migrated).length);
-  elements.toolsGrid.innerHTML = tools
-    .map(
-      (tool) => `
-        <a class="tool-card" href="${tool.url}">
-          <strong>${tool.name}</strong>
-          <p>${tool.description}</p>
-          <span>${tool.status} &rarr;</span>
-        </a>
-      `
-    )
-    .join("");
+  const cards = tools.map((tool) => {
+    const card = document.createElement("a");
+    const name = document.createElement("strong");
+    const description = document.createElement("p");
+    const action = document.createElement("span");
+
+    card.className = "tool-card";
+    card.href = tool.url;
+    name.textContent = tool.name;
+    const summary = tool.description.replace(/[.\s]+$/, "");
+    description.textContent = `${summary}. Versión ${tool.version}.`;
+    action.textContent = `${tool.status} →`;
+    card.append(name, description, action);
+    return card;
+  });
+
+  elements.toolsGrid.replaceChildren(...cards);
 }
 
 function setFirebaseUnavailable(message) {

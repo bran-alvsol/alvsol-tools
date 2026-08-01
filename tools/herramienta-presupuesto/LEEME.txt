@@ -1,0 +1,79 @@
+HERRAMIENTA DE CONTROL DE PRESUPUESTO DE COMPRAS ALVSOL — V1.4
+
+INICIO
+1. Descomprime completamente el archivo ZIP.
+2. Haz doble clic en ABRIR_HERRAMIENTA.bat.
+3. Mantén abierta la ventana negra mientras uses la herramienta.
+4. La herramienta se abrirá en Chrome o Edge en http://127.0.0.1:8765.
+
+COMPATIBILIDAD
+- Conserva la misma base local y reconoce los datos creados con V1.0, V1.1, V1.2 y V1.3.
+- Migra automáticamente la información al nuevo control de periodos de origen.
+- Mantiene los nombres oficiales de las sucursales.
+- Crea un respaldo JSON antes de reemplazar la carpeta de una versión anterior.
+
+MEJORAS V1.4 — PERIODOS ANTERIORES
+- Nueva sección “Compromisos de periodos anteriores” dentro de Compras y pagos.
+- Muestra pagos y anticipos pendientes con:
+  * Periodo de origen.
+  * Referencia y proveedor.
+  * Monto original, aplicado y pendiente.
+  * Botón directo para revisar y asociar.
+- Muestra compras anteriores pendientes de pago y permite buscar pagos de cualquier periodo.
+- Asociación cruzada entre pagos y compras de meses diferentes.
+- Al registrar una compra, la herramienta busca pagos compatibles por proveedor, fecha y monto.
+- La asociación siempre requiere aprobación del usuario.
+- Cada compra conserva dos conceptos separados:
+  * Periodo de registro.
+  * Periodo presupuestario de origen.
+- El origen puede calcularse automáticamente según los pagos o definirse manualmente.
+- Un pago de un periodo anterior conserva su efecto bancario en ese periodo aunque la compra se registre después.
+- Las compras y unidades pendientes se arrastran como mercadería controlada, no como stock anterior sin compra.
+- Las transferencias consumen primero los lotes controlados de periodos anteriores y después los del periodo actual.
+- Se distingue entre:
+  * Mercadería controlada.
+  * Presupuesto arrastrado.
+  * Stock anterior sin compra identificada.
+- El remanente de un pago mayor que la compra continúa como anticipo.
+- Una compra mayor que el pago queda parcialmente pagada y puede recibir otros pagos.
+- Las advertencias de compromisos anteriores se consolidan para evitar una tarjeta por cada registro.
+
+REPORTES NUEVOS O AMPLIADOS
+- Hoja “Compromisos arrastrados”.
+- Origen presupuestario en compras, transferencias y consumo por proveedor.
+- Mercadería pendiente de asignar con periodos y compras de origen.
+- Detalle de transferencias con unidades y valores de presupuesto arrastrado.
+- Asociaciones pago-compra con periodo del pago y periodo de registro de la compra.
+- El resumen ejecutivo incluye hojas de compromisos arrastrados y origen de mercadería.
+
+FUNCIONES CONSERVADAS
+- Presupuesto general y distribución por sucursal.
+- Conciliación bancaria.
+- Compras, pagos y asociaciones parciales.
+- Transferencias desde BOX León (Bodega).
+- Asignaciones internas a BOX León (Bodega).
+- Costos sugeridos con fuente.
+- Análisis por proveedor y sucursal.
+- Gráficas de Inicio.
+- Exportaciones con formato profesional y columnas ajustadas.
+- Indicador permanente de guardado.
+- Respaldo y restauración JSON.
+
+FLUJO RECOMENDADO PARA UN PAGO ANTERIOR
+1. Abre el nuevo periodo.
+2. En Compras y pagos revisa “Compromisos de periodos anteriores”.
+3. Sube o registra la compra BlueLake cuando esté disponible.
+4. Revisa la asociación sugerida.
+5. Aprueba el pago anterior total o parcialmente.
+6. La compra quedará identificada con el periodo presupuestario del pago.
+7. Cuando se transfiera la mercadería, se cargará a la sucursal sin volver a descontar el banco del periodo actual.
+
+GUARDADO Y SEGURIDAD
+- Los datos se guardan en el navegador de esta computadora al Guardar, Aprobar, Registrar, Asociar o Cerrar.
+- El indicador superior confirma el estado y la hora del último guardado exitoso.
+- Usa siempre el mismo navegador y la misma dirección local.
+- Crea respaldos JSON periódicamente y antes de sustituir una versión.
+- No borres los datos del sitio 127.0.0.1:8765 si no tienes respaldo.
+
+NOTA
+La herramienta funciona sin internet. No muevas ni elimines la carpeta vendor.

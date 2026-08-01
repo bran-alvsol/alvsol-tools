@@ -24,6 +24,7 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 |-- index.html
 |-- 404.html
 |-- ABRIR-ALVSOL-TOOLS.bat
+|-- GESTIONAR-HERRAMIENTAS.bat
 |-- ACTUALIZAR-ALVSOL-TOOLS.bat
 |-- PUBLICAR-ALVSOL-TOOLS.bat
 |-- COMO-ACTUALIZAR.txt
@@ -32,18 +33,20 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 |   `-- PROCESADAS/
 |-- assets/
 |   |-- css/
+|   |-- data/
+|   |   `-- tools.json
 |   `-- js/
 |-- docs/
 |-- scripts/
 `-- tools/
-    `-- herramienta-compras/
-        |-- index.html
-        `-- LEEME_V5_21.txt
+    |-- herramienta-compras/
+    `-- herramienta-presupuesto/
 ```
 
 ## Herramientas disponibles
 
 - **HERRAMIENTA COMPRAS:** compras, transferencias y catálogo BOX, versión 5.21.
+- **HERRAMIENTA PRESUPUESTO:** control y planificación del presupuesto de compras ALVSOL, versión 1.4.
 
 ## Configurar Firebase
 
@@ -125,33 +128,36 @@ git push
 
 GitHub Pages publicará automáticamente la nueva versión unos minutos después.
 
-## Agregar una herramienta nueva
+## Agregar o actualizar herramientas
 
-1. Crea una carpeta dentro de `tools/`, por ejemplo `tools/nueva-herramienta/`.
-2. Coloca ahí su `index.html`, CSS, JS y archivos propios.
-3. Agrega una entrada en el arreglo `tools` de `assets/js/app.js`.
-4. Prueba desde el dashboard.
-
-## Actualizar una herramienta existente
-
-Por ahora, el actualizador guiado está preparado para **HERRAMIENTA COMPRAS**.
+El administrador guiado sirve para agregar herramientas nuevas y actualizar cualquiera de las existentes. Cada herramienta conserva su propia carpeta dentro de `tools/`.
 
 ### Paso 1: colocar el ZIP
 
 1. Abre la carpeta `ACTUALIZACIONES/PENDIENTES/`.
 2. Coloca allí el ZIP de la nueva versión.
 3. Deja solamente un ZIP en esa carpeta.
-4. Procura que el nombre incluya la versión, por ejemplo `Herramienta_BOX_V5_22.zip`.
+4. Procura que el nombre incluya la versión, por ejemplo `Herramienta_Presupuesto_V1_5.zip`.
 
-### Paso 2: preparar la actualización
+### Paso 2: elegir la acción
 
-Haz doble clic en `ACTUALIZAR-ALVSOL-TOOLS.bat`.
+Haz doble clic en `GESTIONAR-HERRAMIENTAS.bat`. También puedes seguir usando `ACTUALIZAR-ALVSOL-TOOLS.bat`, que abre el mismo asistente.
 
-El sistema revisará el ZIP, guardará un respaldo de la versión actual, preparará la nueva versión y abrirá el portal local. Si algo no es válido, se detendrá sin borrar la herramienta que ya funciona.
+La ventana mostrará una lista parecida a esta:
+
+```text
+0. Agregar una herramienta nueva
+1. Actualizar HERRAMIENTA COMPRAS
+2. Actualizar HERRAMIENTA PRESUPUESTO
+```
+
+Para agregar una herramienta, elige `0` y escribe el nombre y una descripción corta. Para actualizar, escribe el número de la herramienta correspondiente.
+
+El sistema revisará el ZIP, detectará la versión, preparará su carpeta y abrirá el portal local. Cuando se trate de una actualización, guardará antes un respaldo de la versión actual. Si algo no es válido, se detendrá sin borrar la herramienta que ya funciona.
 
 ### Paso 3: probar
 
-Inicia sesión en el portal local y abre HERRAMIENTA COMPRAS. Antes de publicar, comprueba con archivos reales:
+Inicia sesión en el portal local y abre la herramienta preparada. Antes de publicar, comprueba con archivos reales:
 
 - Carga de reportes.
 - Análisis y cálculos.
@@ -168,7 +174,9 @@ La actualización se enviará a GitHub. GitHub Pages puede tardar unos minutos e
 
 El ZIP utilizado y una copia de la versión anterior quedan en `ACTUALIZACIONES/PROCESADAS/`. Esos ZIP no se suben al sitio público. Git también conserva el historial de las versiones publicadas.
 
-No borres ni renombres las carpetas dentro de `tools/`. El actualizador se encarga de mantener el nombre correcto, añadir la protección de acceso y cambiar la versión mostrada en el dashboard.
+No borres ni renombres las carpetas dentro de `tools/`. El administrador se encarga de mantener el nombre correcto, añadir la protección de acceso y actualizar automáticamente la lista del dashboard guardada en `assets/data/tools.json`.
+
+Las herramientas deben ser páginas web estáticas que funcionen con HTML, CSS y JavaScript. Los archivos que necesitan un servidor propio no pueden ejecutarse en GitHub Pages.
 
 ## Notas de mantenimiento
 

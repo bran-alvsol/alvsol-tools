@@ -1,0 +1,20 @@
+[
+    {
+        "id":  "herramienta-compras",
+        "name":  "HERRAMIENTA COMPRAS",
+        "description":  "Compras, transferencias y catálogo BOX.",
+        "version":  "5.21",
+        "status":  "Abrir",
+        "url":  "./tools/herramienta-compras/",
+        "migrated":  true
+    },
+    {
+        "id":  "herramienta-presupuesto",
+        "name":  "HERRAMIENTA PRESUPUESTO",
+        "description":  "Control y planificación del presupuesto de compras ALVSOL",
+        "version":  "1.4",
+        "status":  "Abrir",
+        "url":  "./tools/herramienta-presupuesto/",
+        "migrated":  true
+    }
+]

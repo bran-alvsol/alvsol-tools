@@ -1,7 +1,8 @@
-COLOCA AQUI EL ZIP DE LA NUEVA VERSION.
+COLOCA AQUI EL ZIP DE UNA HERRAMIENTA.
 
 Reglas sencillas:
 1. Deja un solo archivo ZIP a la vez.
-2. El nombre debe incluir la version, por ejemplo: Herramienta_BOX_V5_22.zip
-3. Ejecuta ACTUALIZAR-ALVSOL-TOOLS.bat desde la carpeta principal.
-4. Prueba la herramienta antes de ejecutar PUBLICAR-ALVSOL-TOOLS.bat.
+2. El nombre debe incluir la version, por ejemplo: Herramienta_Presupuesto_V1_5.zip
+3. Ejecuta GESTIONAR-HERRAMIENTAS.bat desde la carpeta principal.
+4. Elige si deseas agregar una herramienta o actualizar una existente.
+5. Prueba todo antes de ejecutar PUBLICAR-ALVSOL-TOOLS.bat.
