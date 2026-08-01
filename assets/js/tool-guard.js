@@ -38,7 +38,7 @@ function ensurePortalLink() {
   link.setAttribute("aria-label", "Volver a ALVSOL Tools");
   Object.assign(link.style, {
     position: "fixed",
-    top: "12px",
+    bottom: "12px",
     right: "12px",
     zIndex: "2147483647",
     padding: "9px 12px",

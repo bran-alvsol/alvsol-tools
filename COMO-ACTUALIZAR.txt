@@ -1,9 +1,9 @@
 COMO AGREGAR O ACTUALIZAR HERRAMIENTAS
 =======================================
 
-1. COLOCA EL ZIP
-   Abre ACTUALIZACIONES\PENDIENTES y coloca alli el ZIP.
-   Deja solamente un ZIP dentro de esa carpeta.
+1. COLOCA EL ZIP O HTML
+   Abre ACTUALIZACIONES\PENDIENTES y coloca alli el archivo.
+   Deja solamente un ZIP o HTML dentro de esa carpeta.
 
 2. ELIGE QUE HACER
    Haz doble clic en GESTIONAR-HERRAMIENTAS.bat.
@@ -23,7 +23,7 @@ COMO AGREGAR O ACTUALIZAR HERRAMIENTAS
 IMPORTANTE
 ----------
 - Si aparece un error, la version que ya funcionaba no se borra.
-- El ZIP usado y los respaldos quedan en ACTUALIZACIONES\PROCESADAS.
+- El ZIP o HTML usado y los respaldos quedan en ACTUALIZACIONES\PROCESADAS.
 - Cada herramienta conserva su propia carpeta y su propio codigo.
 - GitHub Pages puede tardar unos minutos en mostrar el cambio.
 - Despues de publicar, abre el portal y presiona Ctrl + F5.

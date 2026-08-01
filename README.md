@@ -47,6 +47,8 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 
 - **HERRAMIENTA COMPRAS:** compras, transferencias y catálogo BOX, versión 5.21.
 - **HERRAMIENTA PRESUPUESTO:** control y planificación del presupuesto de compras ALVSOL, versión 1.4.
+- **HERRAMIENTA CUADRE:** comparación y conciliación de conteos BOX, versión 13.13.7.
+- **ANALIZADOR DE METAS BOX:** análisis de metas de ventas, sucursales y asesores BOX, versión 1.3.
 
 ## Configurar Firebase
 
@@ -132,12 +134,12 @@ GitHub Pages publicará automáticamente la nueva versión unos minutos después
 
 El administrador guiado sirve para agregar herramientas nuevas y actualizar cualquiera de las existentes. Cada herramienta conserva su propia carpeta dentro de `tools/`.
 
-### Paso 1: colocar el ZIP
+### Paso 1: colocar el ZIP o HTML
 
 1. Abre la carpeta `ACTUALIZACIONES/PENDIENTES/`.
-2. Coloca allí el ZIP de la nueva versión.
-3. Deja solamente un ZIP en esa carpeta.
-4. Procura que el nombre incluya la versión, por ejemplo `Herramienta_Presupuesto_V1_5.zip`.
+2. Coloca allí el ZIP o HTML de la herramienta.
+3. Deja solamente un archivo en esa carpeta.
+4. Procura que el nombre incluya la versión, por ejemplo `Herramienta_Presupuesto_V1_5.zip` o `Herramienta_Cuadre_V13_14.html`.
 
 ### Paso 2: elegir la acción
 
@@ -149,6 +151,8 @@ La ventana mostrará una lista parecida a esta:
 0. Agregar una herramienta nueva
 1. Actualizar HERRAMIENTA COMPRAS
 2. Actualizar HERRAMIENTA PRESUPUESTO
+3. Actualizar HERRAMIENTA CUADRE
+4. Actualizar ANALIZADOR DE METAS BOX
 ```
 
 Para agregar una herramienta, elige `0` y escribe el nombre y una descripción corta. Para actualizar, escribe el número de la herramienta correspondiente.
@@ -172,7 +176,7 @@ La actualización se enviará a GitHub. GitHub Pages puede tardar unos minutos e
 
 ### Respaldos
 
-El ZIP utilizado y una copia de la versión anterior quedan en `ACTUALIZACIONES/PROCESADAS/`. Esos ZIP no se suben al sitio público. Git también conserva el historial de las versiones publicadas.
+El ZIP o HTML utilizado y una copia de la versión anterior quedan en `ACTUALIZACIONES/PROCESADAS/`. Esos archivos de entrada no se suben al sitio público. Git también conserva el historial de las versiones publicadas.
 
 No borres ni renombres las carpetas dentro de `tools/`. El administrador se encarga de mantener el nombre correcto, añadir la protección de acceso y actualizar automáticamente la lista del dashboard guardada en `assets/data/tools.json`.
 

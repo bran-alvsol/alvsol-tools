@@ -161,16 +161,19 @@ function Select-Tool([object[]]$Catalog) {
 New-Item -ItemType Directory -Force -Path $pendingRoot, $processedRoot, $tempRoot, $toolsRoot | Out-Null
 
 if ([string]::IsNullOrWhiteSpace($ZipPath)) {
-  $zipFiles = @(Get-ChildItem -LiteralPath $pendingRoot -File -Filter "*.zip" | Sort-Object LastWriteTime -Descending)
-  if ($zipFiles.Count -eq 0) { throw "No hay ningun ZIP en ACTUALIZACIONES\PENDIENTES." }
-  if ($zipFiles.Count -gt 1) { throw "Hay mas de un ZIP pendiente. Deja solamente el que deseas preparar." }
-  $zipFullPath = $zipFiles[0].FullName
+  $packageFiles = @(Get-ChildItem -LiteralPath $pendingRoot -File | Where-Object {
+    $_.Extension -in @(".zip", ".html", ".htm")
+  } | Sort-Object LastWriteTime -Descending)
+  if ($packageFiles.Count -eq 0) { throw "No hay ningun ZIP o HTML en ACTUALIZACIONES\PENDIENTES." }
+  if ($packageFiles.Count -gt 1) { throw "Hay mas de un archivo pendiente. Deja solamente el que deseas preparar." }
+  $packageFullPath = $packageFiles[0].FullName
 } else {
-  $zipFullPath = [IO.Path]::GetFullPath($ZipPath)
+  $packageFullPath = [IO.Path]::GetFullPath($ZipPath)
 }
 
-if (-not (Test-Path -LiteralPath $zipFullPath -PathType Leaf)) { throw "No existe el ZIP indicado." }
-if ([IO.Path]::GetExtension($zipFullPath) -ine ".zip") { throw "El archivo debe ser ZIP." }
+if (-not (Test-Path -LiteralPath $packageFullPath -PathType Leaf)) { throw "No existe el archivo indicado." }
+$packageExtension = [IO.Path]::GetExtension($packageFullPath).ToLowerInvariant()
+if ($packageExtension -notin @(".zip", ".html", ".htm")) { throw "El archivo debe ser ZIP o HTML." }
 
 $catalogOriginal = [IO.File]::ReadAllText($catalogPath)
 $catalog = @(Read-Catalog)
@@ -210,44 +213,50 @@ $previousRoot = Join-Path $sessionRoot "anterior"
 New-Item -ItemType Directory -Force -Path $extractRoot, $preparedRoot | Out-Null
 
 try {
-  Write-Step "Validando el ZIP"
-  $archive = [IO.Compression.ZipFile]::OpenRead($zipFullPath)
-  try {
-    if ($archive.Entries.Count -eq 0) { throw "El ZIP esta vacio." }
-    if ($archive.Entries.Count -gt 1000) { throw "El ZIP contiene demasiados archivos." }
+  Write-Step "Validando el archivo"
+  if ($packageExtension -eq ".zip") {
+    $archive = [IO.Compression.ZipFile]::OpenRead($packageFullPath)
+    try {
+      if ($archive.Entries.Count -eq 0) { throw "El ZIP esta vacio." }
+      if ($archive.Entries.Count -gt 1000) { throw "El ZIP contiene demasiados archivos." }
 
-    [long]$totalSize = 0
-    foreach ($entry in $archive.Entries) {
-      $totalSize += $entry.Length
-      if ($entry.Length -gt 100MB) { throw "El ZIP contiene un archivo demasiado grande." }
-      if ($totalSize -gt 300MB) { throw "El contenido del ZIP supera el limite permitido." }
+      [long]$totalSize = 0
+      foreach ($entry in $archive.Entries) {
+        $totalSize += $entry.Length
+        if ($entry.Length -gt 100MB) { throw "El ZIP contiene un archivo demasiado grande." }
+        if ($totalSize -gt 300MB) { throw "El contenido del ZIP supera el limite permitido." }
 
-      $destination = [IO.Path]::GetFullPath((Join-Path $extractRoot $entry.FullName))
-      $extractPrefix = [IO.Path]::GetFullPath($extractRoot).TrimEnd('\') + '\'
-      if (-not $destination.StartsWith($extractPrefix, [StringComparison]::OrdinalIgnoreCase)) {
-        throw "El ZIP contiene una ruta no permitida: $($entry.FullName)"
+        $destination = [IO.Path]::GetFullPath((Join-Path $extractRoot $entry.FullName))
+        $extractPrefix = [IO.Path]::GetFullPath($extractRoot).TrimEnd('\') + '\'
+        if (-not $destination.StartsWith($extractPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+          throw "El ZIP contiene una ruta no permitida: $($entry.FullName)"
+        }
+
+        if ([string]::IsNullOrEmpty($entry.Name)) {
+          New-Item -ItemType Directory -Force -Path $destination | Out-Null
+          continue
+        }
+
+        $destinationDirectory = Split-Path -Parent $destination
+        New-Item -ItemType Directory -Force -Path $destinationDirectory | Out-Null
+        $inputStream = $entry.Open()
+        $outputStream = [IO.File]::Create($destination)
+        try { $inputStream.CopyTo($outputStream) }
+        finally { $outputStream.Dispose(); $inputStream.Dispose() }
       }
-
-      if ([string]::IsNullOrEmpty($entry.Name)) {
-        New-Item -ItemType Directory -Force -Path $destination | Out-Null
-        continue
-      }
-
-      $destinationDirectory = Split-Path -Parent $destination
-      New-Item -ItemType Directory -Force -Path $destinationDirectory | Out-Null
-      $inputStream = $entry.Open()
-      $outputStream = [IO.File]::Create($destination)
-      try { $inputStream.CopyTo($outputStream) }
-      finally { $outputStream.Dispose(); $inputStream.Dispose() }
+    } finally {
+      $archive.Dispose()
     }
-  } finally {
-    $archive.Dispose()
+  } else {
+    $htmlItem = Get-Item -LiteralPath $packageFullPath
+    if ($htmlItem.Length -gt 100MB) { throw "El archivo HTML es demasiado grande." }
+    Copy-Item -LiteralPath $packageFullPath -Destination (Join-Path $extractRoot $htmlItem.Name)
   }
 
   $htmlFiles = @(Get-ChildItem -LiteralPath $extractRoot -Recurse -File | Where-Object {
     $_.Extension -ieq ".html" -and $_.FullName -notmatch '[\\/]__MACOSX[\\/]'
   })
-  if ($htmlFiles.Count -eq 0) { throw "El ZIP no contiene ningun archivo HTML." }
+  if ($htmlFiles.Count -eq 0) { throw "El archivo no contiene ninguna pagina HTML." }
 
   $sortRules = @(
     @{ Expression = { if ($_.Name -ieq "index.html") { 0 } else { 1 } } },
@@ -273,7 +282,7 @@ try {
   Add-PortalProtection $indexPath
   $preparedHtml = [IO.File]::ReadAllText($indexPath)
   $version = Find-Version @(
-    [IO.Path]::GetFileNameWithoutExtension($zipFullPath),
+    [IO.Path]::GetFileNameWithoutExtension($packageFullPath),
     $mainHtml.Name,
     $preparedHtml.Substring(0, [Math]::Min(8000, $preparedHtml.Length))
   )
@@ -341,9 +350,9 @@ try {
 
   if (Test-Path -LiteralPath $previousRoot) { Remove-SafeDirectory $previousRoot $sessionRoot }
 
-  if ([IO.Path]::GetFullPath((Split-Path -Parent $zipFullPath)).TrimEnd('\') -eq [IO.Path]::GetFullPath($pendingRoot).TrimEnd('\')) {
-    $processedZipName = "$timestamp-$ToolId-v$version.zip"
-    Move-Item -LiteralPath $zipFullPath -Destination (Join-Path $processedRoot $processedZipName)
+  if ([IO.Path]::GetFullPath((Split-Path -Parent $packageFullPath)).TrimEnd('\') -eq [IO.Path]::GetFullPath($pendingRoot).TrimEnd('\')) {
+    $processedPackageName = "$timestamp-$ToolId-v$version$packageExtension"
+    Move-Item -LiteralPath $packageFullPath -Destination (Join-Path $processedRoot $processedPackageName)
   }
 
   Write-Host ([Environment]::NewLine + "$Name V$version QUEDO PREPARADA CORRECTAMENTE.") -ForegroundColor Green

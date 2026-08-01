@@ -16,5 +16,23 @@
         "status":  "Abrir",
         "url":  "./tools/herramienta-presupuesto/",
         "migrated":  true
+    },
+    {
+        "id":  "herramienta-cuadre",
+        "name":  "HERRAMIENTA CUADRE",
+        "description":  "Comparación y conciliación de conteos BOX",
+        "version":  "13.13.7",
+        "status":  "Abrir",
+        "url":  "./tools/herramienta-cuadre/",
+        "migrated":  true
+    },
+    {
+        "id":  "herramienta-metas-box",
+        "name":  "ANALIZADOR DE METAS BOX",
+        "description":  "Análisis de metas de ventas, sucursales y asesores BOX",
+        "version":  "1.3",
+        "status":  "Abrir",
+        "url":  "./tools/herramienta-metas-box/",
+        "migrated":  true
     }
 ]
