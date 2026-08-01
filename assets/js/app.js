@@ -17,13 +17,6 @@ const tools = [
     status: "Abrir",
     url: "./tools/herramienta-compras/",
     migrated: true
-  },
-  {
-    name: "Herramienta demo",
-    description: "Ejemplo independiente para validar la estructura tools/ sin tocar herramientas reales.",
-    status: "Lista",
-    url: "./tools/demo-tool/",
-    migrated: false
   }
 ];
 

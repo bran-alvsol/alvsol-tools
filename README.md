@@ -35,10 +35,6 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 ├── docs/
 │   └── firestore.rules
 └── tools/
-    ├── demo-tool/
-    │   ├── index.html
-    │   ├── script.js
-    │   └── styles.css
     └── herramienta-compras/
         ├── index.html
         └── LEEME_V5_21.txt
@@ -47,7 +43,6 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 ## Herramientas disponibles
 
 - **HERRAMIENTA COMPRAS:** compras, transferencias y catálogo BOX, versión 5.21.
-- **Herramienta demo:** ejemplo usado para comprobar la estructura del portal.
 
 ## Configurar Firebase
 
@@ -135,6 +130,26 @@ GitHub Pages publicará automáticamente la nueva versión unos minutos después
 2. Coloca ahí su `index.html`, CSS, JS y archivos propios.
 3. Agrega una entrada en el arreglo `tools` de `assets/js/app.js`.
 4. Prueba desde el dashboard.
+
+## Actualizar una herramienta existente
+
+### Forma recomendada
+
+1. Conserva el archivo ZIP de la versión nueva en tu computadora.
+2. Indica qué herramienta reemplaza y cuál es la versión nueva. Por ejemplo: `Herramienta BOX V5.22 reemplaza HERRAMIENTA COMPRAS V5.21`.
+3. No borres ni renombres la carpeta actual. El historial de Git permite recuperar la versión anterior si algo falla.
+4. Antes de publicar, comprueba la carga de reportes, el análisis y las exportaciones con archivos reales.
+
+Al integrar la actualización se debe conservar la carpeta `tools/herramienta-compras/`, dejar el archivo principal como `index.html`, mantener la protección de acceso y actualizar la versión mostrada en el dashboard.
+
+### Forma manual
+
+1. Reemplaza los archivos dentro de `tools/herramienta-compras/` sin cambiar el nombre de la carpeta.
+2. Confirma que el archivo principal se llame `index.html`.
+3. Conserva la verificación `tool-guard.js` y el enlace para volver al portal.
+4. Actualiza la versión y descripción de Compras en `assets/js/app.js`.
+5. Prueba primero en `http://localhost:8000`.
+6. Publica los cambios con `git add .`, `git commit` y `git push`.
 
 ## Notas de mantenimiento
 
