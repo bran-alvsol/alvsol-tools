@@ -3,3 +3,6 @@ Desktop.ini
 .DS_Store
 *.log
 .vscode/
+/ACTUALIZACIONES/.tmp/
+/ACTUALIZACIONES/PENDIENTES/*.zip
+/ACTUALIZACIONES/PROCESADAS/*.zip

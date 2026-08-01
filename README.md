@@ -21,23 +21,24 @@ El sitio está alojado gratuitamente en GitHub Pages. Firebase controla el inici
 
 ```text
 .
-├── index.html
-├── 404.html
-├── .nojekyll
-├── assets/
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       ├── app.js
-│       ├── firebase-config.js
-│       ├── firebase-service.js
-│       └── tool-guard.js
-├── docs/
-│   └── firestore.rules
-└── tools/
-    └── herramienta-compras/
-        ├── index.html
-        └── LEEME_V5_21.txt
+|-- index.html
+|-- 404.html
+|-- ABRIR-ALVSOL-TOOLS.bat
+|-- ACTUALIZAR-ALVSOL-TOOLS.bat
+|-- PUBLICAR-ALVSOL-TOOLS.bat
+|-- COMO-ACTUALIZAR.txt
+|-- ACTUALIZACIONES/
+|   |-- PENDIENTES/
+|   `-- PROCESADAS/
+|-- assets/
+|   |-- css/
+|   `-- js/
+|-- docs/
+|-- scripts/
+`-- tools/
+    `-- herramienta-compras/
+        |-- index.html
+        `-- LEEME_V5_21.txt
 ```
 
 ## Herramientas disponibles
@@ -133,23 +134,41 @@ GitHub Pages publicará automáticamente la nueva versión unos minutos después
 
 ## Actualizar una herramienta existente
 
-### Forma recomendada
+Por ahora, el actualizador guiado está preparado para **HERRAMIENTA COMPRAS**.
 
-1. Conserva el archivo ZIP de la versión nueva en tu computadora.
-2. Indica qué herramienta reemplaza y cuál es la versión nueva. Por ejemplo: `Herramienta BOX V5.22 reemplaza HERRAMIENTA COMPRAS V5.21`.
-3. No borres ni renombres la carpeta actual. El historial de Git permite recuperar la versión anterior si algo falla.
-4. Antes de publicar, comprueba la carga de reportes, el análisis y las exportaciones con archivos reales.
+### Paso 1: colocar el ZIP
 
-Al integrar la actualización se debe conservar la carpeta `tools/herramienta-compras/`, dejar el archivo principal como `index.html`, mantener la protección de acceso y actualizar la versión mostrada en el dashboard.
+1. Abre la carpeta `ACTUALIZACIONES/PENDIENTES/`.
+2. Coloca allí el ZIP de la nueva versión.
+3. Deja solamente un ZIP en esa carpeta.
+4. Procura que el nombre incluya la versión, por ejemplo `Herramienta_BOX_V5_22.zip`.
 
-### Forma manual
+### Paso 2: preparar la actualización
 
-1. Reemplaza los archivos dentro de `tools/herramienta-compras/` sin cambiar el nombre de la carpeta.
-2. Confirma que el archivo principal se llame `index.html`.
-3. Conserva la verificación `tool-guard.js` y el enlace para volver al portal.
-4. Actualiza la versión y descripción de Compras en `assets/js/app.js`.
-5. Prueba primero en `http://localhost:8000`.
-6. Publica los cambios con `git add .`, `git commit` y `git push`.
+Haz doble clic en `ACTUALIZAR-ALVSOL-TOOLS.bat`.
+
+El sistema revisará el ZIP, guardará un respaldo de la versión actual, preparará la nueva versión y abrirá el portal local. Si algo no es válido, se detendrá sin borrar la herramienta que ya funciona.
+
+### Paso 3: probar
+
+Inicia sesión en el portal local y abre HERRAMIENTA COMPRAS. Antes de publicar, comprueba con archivos reales:
+
+- Carga de reportes.
+- Análisis y cálculos.
+- Exportaciones y descargas.
+- Botón para volver al portal.
+
+### Paso 4: publicar
+
+Cuando todo funcione, haz doble clic en `PUBLICAR-ALVSOL-TOOLS.bat`. Escribe `PUBLICAR` cuando la ventana lo solicite.
+
+La actualización se enviará a GitHub. GitHub Pages puede tardar unos minutos en mostrarla. Después abre el portal publicado y presiona `Ctrl + F5` para cargar la versión nueva.
+
+### Respaldos
+
+El ZIP utilizado y una copia de la versión anterior quedan en `ACTUALIZACIONES/PROCESADAS/`. Esos ZIP no se suben al sitio público. Git también conserva el historial de las versiones publicadas.
+
+No borres ni renombres las carpetas dentro de `tools/`. El actualizador se encarga de mantener el nombre correcto, añadir la protección de acceso y cambiar la versión mostrada en el dashboard.
 
 ## Notas de mantenimiento
 

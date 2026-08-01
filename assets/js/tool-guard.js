@@ -17,7 +17,41 @@ function redirectToPortal() {
 function showTool() {
   if (finished) return;
   finished = true;
+  ensurePortalLink();
   document.documentElement.classList.remove("tool-auth-pending");
+}
+
+function ensurePortalLink() {
+  const existingLink = document.querySelector(
+    '[data-alvsol-portal-link], a[href="../../"], a[href="../../index.html"]'
+  );
+
+  if (existingLink) {
+    existingLink.setAttribute("data-alvsol-portal-link", "");
+    return;
+  }
+
+  const link = document.createElement("a");
+  link.href = portalUrl.href;
+  link.textContent = "Volver al portal";
+  link.setAttribute("data-alvsol-portal-link", "");
+  link.setAttribute("aria-label", "Volver a ALVSOL Tools");
+  Object.assign(link.style, {
+    position: "fixed",
+    top: "12px",
+    right: "12px",
+    zIndex: "2147483647",
+    padding: "9px 12px",
+    border: "1px solid #cfd7db",
+    borderRadius: "6px",
+    background: "#ffffff",
+    color: "#1c2328",
+    boxShadow: "0 4px 14px rgba(0, 0, 0, 0.14)",
+    font: "700 12px Arial, sans-serif",
+    letterSpacing: "0",
+    textDecoration: "none"
+  });
+  document.body.appendChild(link);
 }
 
 async function verifyAccess() {

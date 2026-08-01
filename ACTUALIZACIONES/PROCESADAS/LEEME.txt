@@ -1,0 +1,4 @@
+LOS ZIP PROCESADOS Y LOS RESPALDOS SE GUARDAN AQUI.
+
+Estos archivos no se publican en GitHub. El historial de Git tambien conserva
+las versiones publicadas anteriormente.
