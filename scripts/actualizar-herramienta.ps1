@@ -124,7 +124,7 @@ function Add-PortalProtection([string]$HtmlPath) {
   if ($html -notmatch 'data-alvsol-portal-link' -and $html -notmatch 'href\s*=\s*["'']\.\./\.\./(?:index\.html)?["'']') {
     $navCloseRegex = New-Object Text.RegularExpressions.Regex('</nav>', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
     if ($navCloseRegex.IsMatch($html)) {
-      $portalLink = '<a href="../../" data-alvsol-portal-link style="display:block;margin:12px 0;padding:9px 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;color:inherit;font-weight:700;text-align:center;text-decoration:none">← Volver al portal</a>'
+      $portalLink = '<a href="../../" data-alvsol-portal-link style="display:block;margin:12px 0;padding:9px 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;color:inherit;font-weight:700;text-align:center;text-decoration:none">&larr; Volver al portal</a>'
       $html = $navCloseRegex.Replace($html, ("</nav>{0}{1}" -f [Environment]::NewLine, $portalLink), 1)
     }
   }
