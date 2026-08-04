@@ -29,7 +29,10 @@ New-Item -ItemType Directory -Path $deliveryRoot | Out-Null
 Copy-Item -LiteralPath $installerSource -Destination (Join-Path $deliveryRoot "ALVSOL-Tools-Instalador.exe")
 Copy-Item -LiteralPath (Join-Path $desktopRoot "GUIA-PC-PRINCIPAL.txt") -Destination (Join-Path $deliveryRoot "LEEME-PRIMERO.txt")
 Copy-Item -LiteralPath (Join-Path $desktopRoot "ESPECIFICACION-HERRAMIENTAS-ALVSOL.md") -Destination (Join-Path $deliveryRoot "FORMATO-DE-HERRAMIENTAS.md")
+Copy-Item -LiteralPath (Join-Path $desktopRoot "PROMPT-CODEX-PC-PRINCIPAL.txt") -Destination (Join-Path $deliveryRoot "PROMPT-CODEX-PC-PRINCIPAL.txt")
 Copy-Item -LiteralPath (Join-Path $desktopRoot "prompts") -Destination (Join-Path $deliveryRoot "PROMPTS_PARA_CHATS") -Recurse
+Copy-Item -LiteralPath (Join-Path $desktopRoot "scripts\PREPARAR-ESTA-COMPUTADORA.bat") -Destination (Join-Path $deliveryRoot "PREPARAR-ESTA-COMPUTADORA.bat")
+Copy-Item -LiteralPath (Join-Path $desktopRoot "scripts\PREPARAR-ESTA-COMPUTADORA.ps1") -Destination (Join-Path $deliveryRoot "PREPARAR-ESTA-COMPUTADORA.ps1")
 
 $toolFolders = @(
   "01-COMPRAS",

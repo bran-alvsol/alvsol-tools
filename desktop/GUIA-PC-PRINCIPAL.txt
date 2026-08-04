@@ -9,6 +9,16 @@ OneDrive servirá solamente para respaldos y, más adelante, para pasar copias e
 
 1. INSTALAR EL PROGRAMA
 -----------------------
+FORMA RECOMENDADA CON CODEX:
+
+1. Coloca este ZIP en Descargas, Escritorio o Documentos de la computadora principal.
+2. Abre Codex en esa computadora.
+3. Pega el contenido de PROMPT-CODEX-PC-PRINCIPAL.txt.
+4. Dile a Codex en qué carpeta colocaste el ZIP.
+5. Codex verificará el paquete, ejecutará el preparador y dejará abierto ALVSOL Tools.
+
+FORMA MANUAL:
+
 1. Copia todo este paquete a la computadora principal.
 2. Ejecuta ALVSOL-Tools-Instalador.exe.
 3. Sigue los pasos del instalador.

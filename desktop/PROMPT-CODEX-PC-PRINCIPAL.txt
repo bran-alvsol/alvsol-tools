@@ -1,0 +1,47 @@
+QUIERO QUE PREPARES ESTA COMPUTADORA COMO LA COMPUTADORA PRINCIPAL DE ALVSOL TOOLS.
+
+En esta computadora he colocado el archivo ALVSOL-Tools-PC-Principal-v0.1.0.zip. Localízalo primero en la carpeta que te indique o, si no te doy una ruta, búscalo únicamente en Descargas, Escritorio y Documentos.
+
+Haz todo lo que sea posible sin pedirme ayuda, siguiendo este orden:
+
+1. Comprueba que exista un solo ZIP con ese nombre. Si hay varios, utiliza el de versión más alta y no borres los demás.
+2. Extrae el ZIP en una carpeta llamada ALVSOL-Tools-PC-Principal junto al archivo original.
+3. Lee LEEME-PRIMERO.txt y VERIFICACION-INSTALADOR.txt.
+4. Comprueba que el código SHA256 de ALVSOL-Tools-Instalador.exe coincida con VERIFICACION-INSTALADOR.txt. Si no coincide, detente y avísame.
+5. Ejecuta PREPARAR-ESTA-COMPUTADORA.bat. Si no puedes ejecutar el BAT, ejecuta PREPARAR-ESTA-COMPUTADORA.ps1 con PowerShell solo para esta tarea.
+6. Comprueba que ALVSOL Tools haya quedado instalado en el perfil actual de Windows y que abra correctamente.
+7. Comprueba que exista la carpeta Documentos\ALVSOL Tools - Migracion con estas carpetas:
+   - 01_RESPALDOS_JSON_ORIGINALES
+   - 02_HERRAMIENTAS_ACTUALES
+   - 03_ACTUALIZACIONES_RECIBIDAS
+   - PROMPTS_PARA_CHATS
+8. No borres, muevas ni modifiques información de Chrome, archivos JSON originales ni versiones actuales de las herramientas.
+9. No importes datos todavía en herramientas que indiquen Modo de compatibilidad.
+10. No configures una carpeta de sincronización como base activa. Los datos principales deben permanecer en esta computadora.
+11. Abre ALVSOL Tools y déjalo en el panel principal.
+12. Al terminar, dime solamente:
+   - si la instalación quedó correcta;
+   - la ruta de la carpeta de migración;
+   - dónde debo colocar los JSON, los HTML/ZIP actuales y las actualizaciones recibidas;
+   - que ya puedo seleccionar las carpetas de RESPALDOS y SINCRONIZACION en OneDrive.
+
+DESPUES, CUANDO YO TE DIGA "ARCHIVOS LISTOS":
+
+1. Revisa las carpetas de Documentos\ALVSOL Tools - Migracion sin modificar los originales.
+2. Comprueba que cada actualización HTML o ZIP indique su identificador permanente y versión.
+3. Usa exactamente estos identificadores:
+   - Compras: herramienta-compras
+   - Gastos de Bodega: herramienta-gastos-bodega
+   - Meta Individual: herramienta-meta-individual
+   - Presupuesto: herramienta-presupuesto
+   - Cuadre: herramienta-cuadre
+   - Metas BOX: herramienta-metas-box
+4. Instala una herramienta a la vez desde la sección Actualizaciones de ALVSOL Tools.
+5. Antes de importar un JSON, confirma que corresponde a la herramienta instalada.
+6. Importa siempre una copia del JSON, nunca el único archivo original.
+7. Compara cantidades, totales, configuraciones e historial con la información que yo te indique.
+8. Cierra y vuelve a abrir la herramienta para confirmar que conserva los datos.
+9. Crea un respaldo desde ALVSOL Tools después de cada migración correcta.
+10. Si el nombre, versión, identificador o contenido es ambiguo, detente únicamente en esa herramienta y continúa revisando las demás.
+
+No publiques nada en internet, no uses Firebase y no cambies el portal web.
