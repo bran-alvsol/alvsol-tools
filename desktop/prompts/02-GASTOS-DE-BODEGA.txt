@@ -1,0 +1,20 @@
+QUIERO ADAPTAR LA VERSION MAS RECIENTE DE HERRAMIENTA GASTOS DE BODEGA PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre el HTML o ZIP que adjunto y conserva todas sus funciones, cálculos, registros, categorías, historiales, configuraciones, importaciones y exportaciones.
+
+IDENTIFICADOR PERMANENTE OBLIGATORIO: herramienta-gastos-bodega
+
+REQUISITOS:
+1. Entrégala como HTML único o ZIP con index.html.
+2. Debe funcionar sin internet y tener localmente todas sus librerías, fuentes, imágenes y recursos.
+3. No uses Firebase, servidores ni bases externas.
+4. Cuando exista window.alvsolDesktop.storage, usa getJson, setJson y remove para el estado principal.
+5. Fuera del programa conserva el guardado actual del navegador para facilitar las pruebas.
+6. Incluye Exportar respaldo JSON e Importar o Restaurar respaldo JSON.
+7. El respaldo debe conservar todos los gastos, categorías, fechas, documentos relacionados, configuraciones e historial.
+8. Debe importar el JSON de la versión adjunta y convertirlo de manera segura cuando sea necesario.
+9. No borres información sin confirmación.
+10. Mantén la herramienta independiente y muestra claramente la versión nueva.
+11. Antes de entregar prueba guardar, cerrar, abrir, recuperar, exportar, importar y funcionar sin internet.
+
+AL FINAL INDICA: identificador, versión, claves de guardado, contenido del JSON, archivos grandes y nombre exacto del archivo para instalar.

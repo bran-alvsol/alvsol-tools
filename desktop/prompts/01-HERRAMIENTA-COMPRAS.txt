@@ -1,0 +1,29 @@
+QUIERO ADAPTAR LA VERSION MAS RECIENTE DE HERRAMIENTA COMPRAS PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre el HTML o ZIP que adjunto en este mensaje. Esta es la versión principal y debes conservar todas sus funciones, cálculos, catálogos, compras, transferencias, historiales, configuraciones, importaciones y exportaciones.
+
+IDENTIFICADOR PERMANENTE OBLIGATORIO: herramienta-compras
+
+REQUISITOS:
+1. Entrégala como un HTML único o un ZIP que contenga index.html.
+2. Debe funcionar completamente sin internet.
+3. Incluye dentro del ZIP todas las librerías, fuentes, imágenes y demás recursos. No uses enlaces externos.
+4. No uses Firebase, servidores ni bases externas.
+5. Cuando exista window.alvsolDesktop.storage, guarda y lee el estado principal con getJson, setJson y remove.
+6. Cuando no exista window.alvsolDesktop, conserva el guardado actual del navegador para poder probarla por separado.
+7. Incluye Exportar respaldo JSON e Importar o Restaurar respaldo JSON.
+8. El JSON debe conservar todos los datos importantes de Compras, incluyendo catálogos, historial, configuraciones y relaciones entre registros.
+9. Debe poder importar el respaldo generado por la versión que adjunto. Si la estructura debe cambiar, crea una conversión automática y segura.
+10. No borres ni reemplaces información sin una confirmación clara.
+11. Mantén esta herramienta totalmente separada de las demás.
+12. Muestra claramente el nuevo número de versión.
+13. Conserva las funciones de Excel, PDF u otros archivos usando recursos locales.
+14. Antes de entregar, comprueba: guardar, cerrar, volver a abrir, recuperar datos, exportar JSON, importar JSON y trabajar sin internet.
+
+AL FINAL INDICA:
+- Identificador permanente.
+- Versión nueva.
+- Nombre de la clave o claves de guardado.
+- Qué datos incluye el JSON.
+- Si hay archivos o datos demasiado grandes para guardarlos normalmente.
+- Nombre exacto del HTML o ZIP que debo instalar.

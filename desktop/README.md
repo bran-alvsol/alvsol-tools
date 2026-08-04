@@ -57,3 +57,9 @@ La carpeta compartida transporta copias de los datos; no es la base principal. L
 Abre `Actualizaciones`, selecciona el HTML o ZIP, revisa el nombre y la versión y pulsa `Instalar actualización`. El programa conserva una copia de la versión anterior antes de reemplazarla.
 
 Para pedir cambios en los chats donde se desarrolla cada herramienta, utiliza el texto de `PROMPT-PARA-ACTUALIZAR-HERRAMIENTAS.txt`.
+
+## Llevar a la computadora principal
+
+Ejecuta `CREAR-PAQUETE-PC-PRINCIPAL.bat` desde la carpeta principal del proyecto. Se generará un ZIP con el instalador, la guía de migración, los mensajes para cada chat y carpetas separadas para los respaldos y versiones actuales.
+
+La guía fuente está en `GUIA-PC-PRINCIPAL.txt` y los mensajes personalizados están en `prompts/`.

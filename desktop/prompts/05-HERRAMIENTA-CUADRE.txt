@@ -1,0 +1,20 @@
+QUIERO ADAPTAR LA VERSION MAS RECIENTE DE HERRAMIENTA CUADRE O COMPARADOR DE CONTEOS PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre el HTML o ZIP adjunto y conserva toda la comparación y conciliación de conteos, cálculos, catálogos, resultados, historiales, configuraciones, importaciones y exportaciones.
+
+IDENTIFICADOR PERMANENTE OBLIGATORIO: herramienta-cuadre
+
+REQUISITOS:
+1. Entrégala como HTML único o ZIP con index.html.
+2. Debe funcionar completamente sin internet.
+3. Incluye localmente todas las librerías de Excel y PDF, fuentes y recursos. No uses enlaces CDN.
+4. No uses Firebase, servidores ni bases externas.
+5. En ALVSOL Tools usa window.alvsolDesktop.storage mediante getJson, setJson y remove.
+6. Fuera del programa conserva el guardado actual del navegador.
+7. Incluye Exportar respaldo JSON e Importar o Restaurar respaldo JSON para cualquier configuración, catálogo o historial que deba permanecer.
+8. Debe importar el JSON de la versión adjunta y convertirlo de manera segura cuando sea necesario.
+9. No borres información sin confirmación.
+10. Mantén la herramienta independiente y muestra la nueva versión.
+11. Prueba guardado, cierre, recuperación, importación de conteos, Excel, PDF y funcionamiento sin internet.
+
+AL FINAL INDICA: identificador, versión, claves de guardado, contenido del JSON, archivos grandes y nombre exacto del archivo para instalar.

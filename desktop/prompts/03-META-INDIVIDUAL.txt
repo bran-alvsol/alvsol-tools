@@ -1,0 +1,20 @@
+QUIERO ADAPTAR LA VERSION MAS RECIENTE DE HERRAMIENTA META INDIVIDUAL PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre el HTML o ZIP adjunto y conserva todas sus funciones, cálculos, metas, personas, periodos, resultados, historiales, configuraciones, importaciones y exportaciones.
+
+IDENTIFICADOR PERMANENTE OBLIGATORIO: herramienta-meta-individual
+
+REQUISITOS:
+1. Entrégala como HTML único o ZIP con index.html.
+2. Debe funcionar sin internet y contener localmente todos sus recursos.
+3. No uses Firebase, servidores ni bases externas.
+4. En ALVSOL Tools usa window.alvsolDesktop.storage mediante getJson, setJson y remove.
+5. Fuera del programa conserva el guardado actual del navegador.
+6. Incluye Exportar respaldo JSON e Importar o Restaurar respaldo JSON.
+7. Conserva en el respaldo todas las metas, personas, periodos, resultados, configuraciones e historial.
+8. Importa correctamente el JSON de la versión adjunta, aplicando una conversión segura si cambia la estructura.
+9. No borres información sin confirmación.
+10. Mantén la herramienta independiente y muestra la versión nueva.
+11. Prueba guardar, cerrar, abrir, recuperar, exportar, importar y funcionar sin internet.
+
+AL FINAL INDICA: identificador, versión, claves de guardado, contenido del JSON, archivos grandes y nombre exacto del archivo para instalar.

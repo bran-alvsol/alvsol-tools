@@ -1,0 +1,28 @@
+QUIERO ADAPTAR LA VERSION MAS RECIENTE DE ESTA HERRAMIENTA PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre el HTML o ZIP que adjunto y conserva todas sus funciones, cálculos, datos, historiales, configuraciones, importaciones y exportaciones.
+
+Antes de modificarla, indícame un identificador permanente sencillo con este formato: herramienta-nombre-corto. Ese identificador no deberá cambiar en versiones futuras.
+
+REQUISITOS:
+1. Entrégala como HTML único o ZIP con index.html.
+2. Debe funcionar completamente sin internet.
+3. Incluye localmente todas las librerías, fuentes, imágenes y recursos. No uses enlaces externos.
+4. No uses Firebase, servidores ni bases externas.
+5. En ALVSOL Tools usa window.alvsolDesktop.storage mediante getJson, setJson y remove.
+6. Fuera del programa conserva el guardado actual del navegador para facilitar las pruebas.
+7. Incluye Exportar respaldo JSON e Importar o Restaurar respaldo JSON.
+8. El respaldo debe conservar toda la información necesaria para reconstruir el trabajo de la herramienta.
+9. Debe importar el JSON de la versión adjunta y convertirlo de forma segura si cambia la estructura.
+10. No borres ni reemplaces información sin confirmación.
+11. Mantén esta herramienta totalmente separada de las demás.
+12. Muestra claramente la versión nueva.
+13. Antes de entregar prueba guardar, cerrar, abrir, recuperar, exportar, importar y funcionar sin internet.
+
+AL FINAL INDICA:
+- Identificador permanente.
+- Versión.
+- Clave o claves de guardado.
+- Contenido del respaldo JSON.
+- Si maneja archivos o datos grandes.
+- Nombre exacto del HTML o ZIP que debo instalar.

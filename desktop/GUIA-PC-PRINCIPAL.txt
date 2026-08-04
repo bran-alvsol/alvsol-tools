@@ -1,0 +1,116 @@
+ALVSOL TOOLS - GUIA PARA LA COMPUTADORA PRINCIPAL
+==================================================
+
+OBJETIVO
+--------
+Esta computadora será la principal. Aquí quedarán los datos activos del programa.
+OneDrive servirá solamente para respaldos y, más adelante, para pasar copias entre computadoras.
+
+
+1. INSTALAR EL PROGRAMA
+-----------------------
+1. Copia todo este paquete a la computadora principal.
+2. Ejecuta ALVSOL-Tools-Instalador.exe.
+3. Sigue los pasos del instalador.
+4. Abre ALVSOL Tools desde el acceso directo del escritorio.
+
+Al abrirlo verás algunas herramientas incluidas. No importes todavía datos importantes en las que digan
+"Modo de compatibilidad". Primero instala la versión actualizada y preparada para Windows.
+
+
+2. PREPARAR LOS ARCHIVOS ORIGINALES
+-----------------------------------
+Dentro de este paquete encontrarás estas carpetas:
+
+- 01_RESPALDOS_JSON_ORIGINALES
+- 02_HERRAMIENTAS_ACTUALES
+- 03_ACTUALIZACIONES_RECIBIDAS
+
+Para cada herramienta:
+
+1. Abre la versión más reciente que utilizas actualmente en Chrome.
+2. Exporta su respaldo JSON, si la herramienta permite hacerlo.
+3. Guarda ese JSON en su carpeta dentro de 01_RESPALDOS_JSON_ORIGINALES.
+4. Guarda el HTML o ZIP más reciente en su carpeta dentro de 02_HERRAMIENTAS_ACTUALES.
+5. No modifiques ni reemplaces esos archivos originales.
+
+Usa nombres con fecha, por ejemplo:
+
+Compras_Respaldo_2026-08-04.json
+Herramienta_Compras_V5_25.html
+
+
+3. PEDIR LA ADAPTACION EN CADA CHAT
+-----------------------------------
+1. Abre el chat donde desarrollas esa herramienta.
+2. Adjunta el HTML o ZIP más reciente.
+3. Adjunta también una COPIA del respaldo JSON. Si contiene información confidencial, crea primero un
+   respaldo de prueba sin datos sensibles o pídele al chat que te indique qué estructura necesita revisar.
+4. Abre la carpeta PROMPTS_PARA_CHATS de este paquete.
+5. Copia y envía el texto correspondiente a esa herramienta.
+6. Guarda el HTML o ZIP que recibas en 03_ACTUALIZACIONES_RECIBIDAS.
+
+Haz este proceso una herramienta a la vez. La primera recomendada es HERRAMIENTA COMPRAS.
+
+
+4. INSTALAR CADA HERRAMIENTA ACTUALIZADA
+----------------------------------------
+1. Abre ALVSOL Tools.
+2. Entra a Actualizaciones.
+3. Pulsa Seleccionar archivo.
+4. Elige el HTML o ZIP recibido.
+5. Revisa cuidadosamente el identificador, nombre y versión.
+6. Pulsa Instalar actualización.
+7. Abre la herramienta desde el panel.
+8. Usa su opción Importar o Restaurar respaldo JSON.
+9. Selecciona una COPIA del JSON original correspondiente.
+10. Compara cantidades, totales, catálogos, configuraciones e historial con la versión de Chrome.
+11. Cierra por completo la herramienta, vuelve a abrirla y confirma que conserva la información.
+12. En ALVSOL Tools entra a Respaldos y pulsa Crear respaldo.
+
+No sigas registrando datos nuevos en Chrome después de confirmar que una herramienta ya migró correctamente.
+
+
+5. DONDE QUEDA LA INFORMACION
+-----------------------------
+No tienes que copiar nada manualmente a la carpeta interna del programa.
+
+La base activa queda automáticamente en:
+
+%APPDATA%\alvsol-tools-desktop
+
+No edites, muevas ni sincronices directamente esa carpeta.
+
+Los JSON originales son respaldos de migración. Consérvalos aparte, preferiblemente también en un disco USB
+o en una carpeta privada de OneDrive.
+
+
+6. CONFIGURAR RESPALDOS Y ONEDRIVE
+----------------------------------
+Crea dos carpetas diferentes en OneDrive:
+
+OneDrive\ALVSOL Tools\RESPALDOS
+OneDrive\ALVSOL Tools\SINCRONIZACION
+
+En ALVSOL Tools:
+
+1. En Respaldos, selecciona la carpeta RESPALDOS como carpeta adicional.
+2. En Sincronización, selecciona la carpeta SINCRONIZACION.
+
+No mezcles ambas carpetas y no edites manualmente los archivos de SINCRONIZACION.
+
+Primero termina y revisa la migración en la computadora principal. Configura una segunda computadora solamente
+después de tener un respaldo local y otro en OneDrive.
+
+
+7. ORDEN RECOMENDADO
+--------------------
+[ ] HERRAMIENTA COMPRAS
+[ ] HERRAMIENTA GASTOS DE BODEGA
+[ ] HERRAMIENTA META INDIVIDUAL
+[ ] HERRAMIENTA PRESUPUESTO
+[ ] HERRAMIENTA CUADRE
+[ ] ANALIZADOR DE METAS BOX
+[ ] OTRAS HERRAMIENTAS
+
+No borres las versiones de Chrome ni sus respaldos hasta terminar toda la revisión.
