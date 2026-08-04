@@ -252,15 +252,50 @@ function normalizeHistory(data){
 }
 state.history=emptyHistory();
 
+async function encodeDesktopValue(value){
+  if(value instanceof Blob){
+    const bytes=new Uint8Array(await value.arrayBuffer());let binary='';
+    for(let i=0;i<bytes.length;i+=32768)binary+=String.fromCharCode(...bytes.subarray(i,i+32768));
+    return{__alvsolFile:true,name:value.name||'',type:value.type||'',lastModified:value.lastModified||Date.now(),base64:btoa(binary)}
+  }
+  if(Array.isArray(value))return Promise.all(value.map(encodeDesktopValue));
+  if(value&&typeof value==='object'){
+    const output={};for(const[key,item]of Object.entries(value))output[key]=await encodeDesktopValue(item);return output
+  }
+  return value
+}
+async function decodeDesktopValue(value){
+  if(value&&value.__alvsolFile){
+    const binary=atob(value.base64||''),bytes=new Uint8Array(binary.length);
+    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+    return new File([bytes],value.name||'archivo',{type:value.type||'',lastModified:value.lastModified||Date.now()})
+  }
+  if(Array.isArray(value))return Promise.all(value.map(decodeDesktopValue));
+  if(value&&typeof value==='object'){
+    const output={};for(const[key,item]of Object.entries(value))output[key]=await decodeDesktopValue(item);return output
+  }
+  return value
+}
+
 function openLocalDb(){return new Promise((resolve,reject)=>{if(!globalThis.indexedDB){reject(new Error('IndexedDB no disponible'));return}const req=indexedDB.open(LOCAL_DB_NAME,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(LOCAL_STORE))db.createObjectStore(LOCAL_STORE)};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('No se pudo abrir el almacenamiento local'))})}
 function workspacePayload(){return{schemaVersion:1,year:state.year,selectedMonth:state.selectedMonth,selectedWeek:state.selectedWeek,selectedWeeks:[...state.selectedWeeks],periodMode:state.periodMode,currentEntries:state.currentEntries,currentMonthly:state.currentMonthly,reviewReady:state.reviewReady,analysisReady:state.analysisReady,analysisActionText:$('analysisActionText')?.textContent||'',files:state.files.map(f=>({id:f.id,fileBlob:f.file,fileName:f.file?.name||f.fileName||'',fileType:f.file?.type||f.fileType||'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',lastModified:f.file?.lastModified||f.lastModified||Date.now(),hash:f.hash,branch:f.branch||'',assignmentSource:f.assignmentSource||'manual',assignmentReason:f.assignmentReason||'',suggestedBranch:f.suggestedBranch||'',parsed:f.parsed||null,error:f.error||null,parsedAt:f.parsedAt||null}))}}
 function restoreStoredFile(raw){try{let file=raw.fileBlob;if(!(file instanceof File)){if(!file)return null;file=new File([file],raw.fileName||'reporte.xlsx',{type:raw.fileType||'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',lastModified:raw.lastModified||Date.now()})}return{id:raw.id||uid(),file,hash:raw.hash||'',branch:raw.branch||'',assignmentSource:raw.assignmentSource||'manual',assignmentReason:raw.assignmentReason||'',suggestedBranch:raw.suggestedBranch||'',parsed:raw.parsed||null,error:raw.error||null,parsing:false,parsedAt:raw.parsedAt||null}}catch{return null}}
 function restoreWorkspace(ws){if(!ws||typeof ws!=='object')return;state.year=Number(ws.year)||state.year;state.selectedMonth=Number(ws.selectedMonth)||null;state.selectedWeek=Number(ws.selectedWeek)||null;state.selectedWeeks=Array.isArray(ws.selectedWeeks)?ws.selectedWeeks.map(Number).filter(Boolean):[];state.periodMode=['single','multi','month'].includes(ws.periodMode)?ws.periodMode:'single';state.currentEntries=Array.isArray(ws.currentEntries)?ws.currentEntries:[];state.currentMonthly=Array.isArray(ws.currentMonthly)?ws.currentMonthly:[];state.reviewReady=!!ws.reviewReady;state.analysisReady=!!ws.analysisReady;state.files=Array.isArray(ws.files)?ws.files.map(restoreStoredFile).filter(Boolean):[];state.workspaceRestored=state.files.length>0||state.currentEntries.length>0||state.currentMonthly.length>0;state.restoredAnalysisActionText=clean(ws.analysisActionText)}
 async function readLocalPayload(){
+  if(window.alvsolDesktop?.storage){
+    const stored=await window.alvsolDesktop.storage.getJson(LOCAL_KEY);
+    if(stored?.valueJson){state.storageMode='Base local del programa';return decodeDesktopValue(JSON.parse(stored.valueJson))}
+    return null
+  }
   try{const db=await openLocalDb();const value=await new Promise((resolve,reject)=>{const tx=db.transaction(LOCAL_STORE,'readonly'),req=tx.objectStore(LOCAL_STORE).get(LOCAL_KEY);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error)});db.close();if(value)return value}catch(err){state.storageMode='respaldo del navegador'}
   try{const raw=localStorage.getItem(LOCAL_FALLBACK_KEY);return raw?JSON.parse(raw):null}catch{return null}
 }
 async function writeLocalPayload(payload){
+  if(window.alvsolDesktop?.storage){
+    const encoded=await encodeDesktopValue(payload);
+    await window.alvsolDesktop.storage.setJson(LOCAL_KEY,JSON.stringify(encoded));
+    state.storageMode='Base local del programa';return
+  }
   let stored=false,lastError=null;
   try{const db=await openLocalDb();await new Promise((resolve,reject)=>{const tx=db.transaction(LOCAL_STORE,'readwrite');tx.objectStore(LOCAL_STORE).put(payload,LOCAL_KEY);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)});db.close();stored=true;state.storageMode='IndexedDB'}catch(err){lastError=err;state.storageMode='respaldo del navegador'}
   try{const fallback={history:payload.history,savedAt:payload.savedAt,appVersion:payload.appVersion};const compact=JSON.stringify(fallback);if(compact.length<4_200_000)localStorage.setItem(LOCAL_FALLBACK_KEY,compact);if(!stored)stored=true}catch(err){lastError=lastError||err}

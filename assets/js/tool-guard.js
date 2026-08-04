@@ -90,4 +90,8 @@ async function verifyAccess() {
   }, firebase.authModule);
 }
 
-verifyAccess().catch(redirectToPortal);
+if (window.alvsolDesktop?.isDesktop) {
+  showTool();
+} else {
+  verifyAccess().catch(redirectToPortal);
+}

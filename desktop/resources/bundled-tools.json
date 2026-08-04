@@ -1,0 +1,34 @@
+[
+  {
+    "id": "herramienta-compras",
+    "name": "HERRAMIENTA COMPRAS",
+    "description": "Compras, transferencias y catálogo BOX",
+    "version": "5.21",
+    "entry": "index.html",
+    "storageMode": "compatibility"
+  },
+  {
+    "id": "herramienta-presupuesto",
+    "name": "HERRAMIENTA PRESUPUESTO",
+    "description": "Control y planificación del presupuesto de compras",
+    "version": "1.4",
+    "entry": "index.html",
+    "storageMode": "compatibility"
+  },
+  {
+    "id": "herramienta-cuadre",
+    "name": "HERRAMIENTA CUADRE",
+    "description": "Comparación y conciliación de conteos BOX",
+    "version": "13.13.7",
+    "entry": "index.html",
+    "storageMode": "compatibility"
+  },
+  {
+    "id": "herramienta-metas-box",
+    "name": "ANALIZADOR DE METAS BOX",
+    "description": "Análisis de metas de ventas, sucursales y asesores",
+    "version": "1.3",
+    "entry": "index.html",
+    "storageMode": "native"
+  }
+]

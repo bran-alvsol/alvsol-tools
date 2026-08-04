@@ -10,3 +10,7 @@ Desktop.ini
 /ACTUALIZACIONES/PENDIENTES/*.htm
 /ACTUALIZACIONES/PROCESADAS/*.html
 /ACTUALIZACIONES/PROCESADAS/*.htm
+/desktop/node_modules/
+/desktop/dist/
+/desktop/.cache/
+/desktop/*.log

@@ -1,0 +1,71 @@
+{
+  "name": "alvsol-tools-desktop",
+  "version": "0.1.0",
+  "description": "Centro local de herramientas de ALVSOL S.A. y BOX Protección Celular",
+  "main": "src/main.cjs",
+  "author": "ALVSOL S.A.",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "test:desktop": "node scripts/desktop-smoke.cjs",
+    "verify": "node scripts/verify.cjs",
+    "dist": "npm run test && npm run verify && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "adm-zip": "0.6.0",
+    "sql.js": "1.14.1"
+  },
+  "devDependencies": {
+    "electron": "43.3.0",
+    "electron-builder": "26.15.3",
+    "playwright-core": "1.62.1"
+  },
+  "build": {
+    "appId": "com.alvsol.tools",
+    "productName": "ALVSOL Tools",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../tools",
+        "to": "portal/tools"
+      },
+      {
+        "from": "../assets",
+        "to": "portal/assets"
+      }
+    ],
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "ALVSOL-Tools-${version}-Windows-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ALVSOL Tools",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "allowScripts": {
+    "electron@43.3.0": true
+  }
+}

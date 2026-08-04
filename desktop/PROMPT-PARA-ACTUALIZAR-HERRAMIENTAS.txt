@@ -1,0 +1,28 @@
+QUIERO ACTUALIZAR UNA HERRAMIENTA PARA ALVSOL TOOLS WINDOWS.
+
+Trabaja sobre la herramienta que ya existe en este chat y conserva todas sus funciones actuales.
+
+REQUISITOS:
+1. Entrégala como HTML único o ZIP con index.html.
+2. Debe funcionar completamente sin internet.
+3. Incluye localmente todas las librerías, fuentes, imágenes y demás recursos.
+4. No uses Firebase, servidores ni bases de datos externas.
+5. Conserva el mismo identificador permanente de la herramienta.
+6. Muestra claramente el número de versión nuevo.
+7. Cuando exista window.alvsolDesktop.storage, guarda y lee el estado principal mediante:
+   - getJson(clave)
+   - setJson(clave, JSON.stringify(datos))
+   - remove(clave)
+8. Cuando no exista window.alvsolDesktop, conserva el guardado actual del navegador para poder probar el HTML por separado.
+9. La actualización debe recuperar los datos de la versión anterior y aplicar cualquier conversión necesaria.
+10. Incluye botones para exportar y restaurar un respaldo JSON.
+11. No borres información sin confirmación explícita.
+12. Mantén cada herramienta independiente y no uses archivos de otras herramientas.
+13. Antes de entregar, prueba que guarda, cierra, vuelve a abrir y recupera la información.
+
+AL FINAL INDICA:
+- Identificador permanente.
+- Versión.
+- Clave o claves utilizadas para guardar datos.
+- Si contiene archivos grandes o adjuntos.
+- Si requiere alguna adaptación especial para ALVSOL Tools Windows.

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALVSOL Tools</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-mark" aria-hidden="true">AT</div>
+    <div class="brand-copy">
+      <strong>ALVSOL Tools</strong>
+      <span>Centro local de herramientas</span>
+    </div>
+    <div class="header-status">
+      <span class="status-dot" id="databaseDot"></span>
+      <span id="databaseStatus">Base local</span>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <nav class="sidebar" aria-label="Secciones">
+      <button class="nav-button active" data-view="tools">Herramientas</button>
+      <button class="nav-button" data-view="backups">Respaldos</button>
+      <button class="nav-button" data-view="sync">Sincronización</button>
+      <button class="nav-button" data-view="updates">Actualizaciones</button>
+    </nav>
+
+    <main class="workspace">
+      <section class="view active" id="view-tools">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">PROGRAMA DE WINDOWS</p>
+            <h1>Herramientas</h1>
+          </div>
+          <div class="summary" aria-label="Resumen">
+            <div><strong id="toolCount">0</strong><span>herramientas</span></div>
+            <div><strong id="nativeCount">0</strong><span>con base propia</span></div>
+          </div>
+        </div>
+        <div class="tool-list" id="toolList" aria-live="polite"></div>
+      </section>
+
+      <section class="view" id="view-backups">
+        <div class="page-heading compact">
+          <div><p class="eyebrow">SEGURIDAD LOCAL</p><h1>Respaldos</h1></div>
+          <button class="primary-button" id="createBackupButton">Crear respaldo</button>
+        </div>
+        <div class="settings-band">
+          <div><span>Carpeta adicional</span><strong id="backupFolder">No configurada</strong></div>
+          <button class="secondary-button" id="chooseBackupFolderButton">Seleccionar carpeta</button>
+        </div>
+        <div class="section-heading"><h2>Copias recientes</h2><button class="text-button" id="restoreBackupButton">Restaurar una copia</button></div>
+        <div class="data-list" id="backupList"></div>
+      </section>
+
+      <section class="view" id="view-sync">
+        <div class="page-heading compact">
+          <div><p class="eyebrow">ENTRE COMPUTADORAS</p><h1>Sincronización</h1></div>
+          <span class="pill" id="syncPill">Sin configurar</span>
+        </div>
+        <div class="settings-band">
+          <div><span>Carpeta compartida</span><strong id="syncFolder">No configurada</strong></div>
+          <button class="secondary-button" id="chooseSyncFolderButton">Seleccionar OneDrive</button>
+        </div>
+        <div class="sync-panel">
+          <div>
+            <span>Estado</span>
+            <strong id="syncStatusText">Selecciona una carpeta compartida</strong>
+            <small id="syncDetail"></small>
+          </div>
+          <div class="button-row">
+            <button class="secondary-button" id="checkSyncButton">Revisar cambios</button>
+            <button class="primary-button" id="publishSyncButton">Compartir copia actual</button>
+            <button class="primary-button hidden" id="applySyncButton">Aplicar copia disponible</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-updates">
+        <div class="page-heading compact">
+          <div><p class="eyebrow">HTML O ZIP</p><h1>Actualizaciones</h1></div>
+          <button class="secondary-button" id="selectPackageButton">Seleccionar archivo</button>
+        </div>
+        <form class="update-form" id="updateForm">
+          <label class="wide">Archivo<input id="packagePath" readonly placeholder="Ningún archivo seleccionado"></label>
+          <label>Identificador<input id="toolId" required placeholder="herramienta-compras"></label>
+          <label>Versión<input id="toolVersion" required placeholder="1.0"></label>
+          <label class="wide">Nombre<input id="toolName" required placeholder="HERRAMIENTA"></label>
+          <label class="wide">Descripción<input id="toolDescription" placeholder="Descripción corta"></label>
+          <div class="form-actions wide">
+            <span id="updateStatus" role="status"></span>
+            <button class="primary-button" type="submit">Instalar actualización</button>
+          </div>
+        </form>
+        <div class="section-heading"><h2>Actividad reciente</h2></div>
+        <div class="data-list" id="activityList"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

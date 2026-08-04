@@ -1,6 +1,16 @@
 # ALVSOL Tools
 
-Portal web interno y estático para centralizar herramientas HTML de ALVSOL S.A. / BOX Protección Celular.
+Centro de herramientas de ALVSOL S.A. / BOX Protección Celular.
+
+## Nueva dirección: programa de Windows
+
+El desarrollo principal ahora está en `desktop/`. Esta versión guarda la información en la computadora, crea respaldos locales, admite una carpeta adicional y puede intercambiar copias entre dos equipos mediante OneDrive. El portal web permanece publicado, pero queda detenido por el momento.
+
+Consulta `desktop/README.md` para abrir, probar y construir el programa instalado.
+
+## Portal web anterior
+
+Portal web interno y estático que se conserva como versión anterior del proyecto.
 
 ## Portal publicado
 
